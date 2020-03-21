@@ -1,0 +1,49 @@
+version: "3.7"
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - 5352:80
+    depends_on: 
+      - backend  
+    networks:
+      - frontend
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend 
+    ports:
+      - 5354:8081
+    depends_on: 
+      - db
+    networks:
+      - backend
+      - database
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: app_name
+      POSTGRES_USER: app_name_user 
+      POSTGRES_PASSWORD: yourpassword
+    container_name: database 
+    ports:
+      - 5432:5432
+    volumes:
+      - type: bind
+        source: ./db
+        target: /var/lib/postgresql
+    networks:
+      - database
+
+networks: 
+  frontend:
+  backend:
+  database:
