@@ -10,4 +10,4 @@
 **Launch the application**
 
 On any browser:
-    *localhost:5353*
+    *localhost:5352*
