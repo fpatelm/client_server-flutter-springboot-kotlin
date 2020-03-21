@@ -43,6 +43,19 @@ services:
     networks:
       - database
 
+  pgAdmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    ports:
+      - 5000:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@example.pt"
+      PGADMIN_DEFAULT_PASSWORD: "yourpassword"   
+    depends_on:
+      - db  
+    networks:
+      - database   
+
 networks: 
   frontend:
   backend:
