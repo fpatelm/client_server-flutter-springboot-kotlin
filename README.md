@@ -1,4 +1,4 @@
-# Project Name
+# Flutter Web + Koltin Springboot 
 
 Template project for a full stack application with Springboot koltin and flutter web / multiplatform
 
